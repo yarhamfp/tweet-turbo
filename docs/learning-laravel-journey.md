@@ -34,6 +34,15 @@ Tambahkan kode baris berikut ke `webpack.max.js`
 mix.browserSync('127.0.0.1:8000');
 ```
 
+### validasi pada controller
+
+```php
+$request->validate([
+  'content' => 'required',
+])
+
+```
+
 ## Contoh Kasus
 
 membuat aplikasi bootleg twitter menggunakan Laravel dan Turbo
@@ -48,7 +57,7 @@ cukup membuat form memposting tweet, dan menampilkan tweet yang telah dibuat
 3. Generate model `Tweet` dengan atribut `content`, dan `timestamps` (created_at, updated_at)
 4. Run migration `php artisan migrate`
 5. Membuat action `TweetsController.index` merender view `pages.tweets.index`
-5. Membuat view `tweets.index`, yang isinya form HTML untuk submit tweet. buat file baru di `resources/views/pages/tweets/index.php`
+6. Membuat view `tweets.index`, yang isinya form HTML untuk submit tweet. buat file baru di `resources/views/pages/tweets/index.php`
 
 pada saat form tweet disubmit, maka action create mengirim respon view tampilan tweet yang telah dibuat
 

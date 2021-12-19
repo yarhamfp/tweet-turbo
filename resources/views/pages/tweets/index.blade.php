@@ -22,6 +22,23 @@
         </div>
         <div class="col-6">
             @include('pages.tweets._form')
+            @forelse ($tweets as $tweet)
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-1">
+                                <img src="https://www.gravatar.com/avatar/" class="rounded-circle" width="40" alt="">
+                            </div>
+                            <div class="col-11">
+                                {{ $tweet->content }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @empty
+
+            @endforelse
+
         </div>
         <div class="col-3">
             <div class="card bg-light mb-3" style="max-width: 18rem;">

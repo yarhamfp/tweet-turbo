@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tweet;
 use Illuminate\Http\Request;
 
 class TweetsController extends Controller
@@ -14,7 +15,10 @@ class TweetsController extends Controller
      */
     public function index()
     {
-        return view('pages.tweets.index');
+        $tweets = Tweet::orderBy("created_at", "desc")->get();
+        return view('pages.tweets.index', [
+            'tweets' => $tweets
+        ]);
     }
 
     /**
@@ -38,9 +42,12 @@ class TweetsController extends Controller
         $request->validate([
             'content' => 'required',
         ]);
-        
+
         $data = $request->all();
-        dd($data);
+        Tweet::create($data);
+        // TODO: render turbo stream prepend
+
+        return back();
     }
 
     /**
