@@ -1,11 +1,11 @@
-<div class="card">
-    <div class="card-body">
-        <div class="row">
-            <div class="col-1">
-                <img src="https://www.gravatar.com/avatar/" class="rounded-circle" width="40" alt="">
-            </div>
-            <div class="col-11">
-                <turbo-frame id="form">
+<turbo-frame id="new_tweet">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-1">
+                    <img src="https://www.gravatar.com/avatar/" class="rounded-circle" width="40" alt="">
+                </div>
+                <div class="col-11">
                     <form action="{{ route('tweets.store') }}" method="post">
                         @csrf
                         <div class="form-group">
@@ -19,8 +19,8 @@
                         </div>
                         <button type="submit" class="btn btn-primary float-right">Tweet</button>
                     </form>
-                </turbo-frame>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</turbo-frame>

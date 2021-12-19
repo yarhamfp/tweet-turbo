@@ -49,10 +49,16 @@ class TweetsController extends Controller
         
         // TODO: investigate why wantsTurboStream() is returning false
         if (request()->wantsTurboStream()) {
-            return response()->turboStream()
-                ->target('tweets')
-                ->action('prepend') // menambahkan elemen
-                ->view('pages.tweets._tweet_cre', ['tweet' => $tweet]);
+            return response()->turboStream([
+                response()->turboStream()
+                    ->action('prepend') // menambahkan elemen ke posisi awal
+                    ->target('tweets')  // id element yang akan diupdate
+                    ->view('pages.tweets._tweet', ['tweet' => $tweet]),  // view yang akan digunakan
+                response()->turboStream()
+                    ->action('replace') // mereplace element
+                    ->target("new_tweet") // id element yang akan di replace
+                    ->view('pages.tweets._form'), // view yang akan digunakan
+            ]);
         }
 
         return back();
