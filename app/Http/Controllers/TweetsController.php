@@ -45,21 +45,17 @@ class TweetsController extends Controller
 
         $data = $request->all();
         $tweet = Tweet::create($data);
-        // TODO: render turbo stream prepend
-
+        // dd(request()->wantsTurboStream());
+        
+        // TODO: investigate why wantsTurboStream() is returning false
         if (request()->wantsTurboStream()) {
             return response()->turboStream()
                 ->target('tweets')
-                ->action('prepend')
-                ->view('pages.tweets._tweet', ['tweet' => $tweet]);
+                ->action('prepend') // menambahkan elemen
+                ->view('pages.tweets._tweet_cre', ['tweet' => $tweet]);
         }
 
-        return redirect()->route('tweets.index');
-        // return view("pages.tweets._tweet", [
-        //     'tweet' => $tweet
-        // ]);
-
-        // return back();
+        return back();
     }
 
     /**

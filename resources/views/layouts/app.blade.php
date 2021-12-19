@@ -21,6 +21,9 @@
     </div>
     <script src="https://unpkg.com/windicss-runtime-dom"></script>
 
+    {{-- tadi belum dibuat script --}}
+    <script src="/js/app.js"></script>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
